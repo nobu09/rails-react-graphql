@@ -4,4 +4,7 @@ documents: "src/graphql/**/*.ts"
 generates:
   src/graphql/generated.ts:
     preset: "client"
-    plugins: []
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
