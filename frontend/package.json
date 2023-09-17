@@ -48,5 +48,6 @@
     "@graphql-codegen/client-preset": "4.1.0",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7"
-  }
+  },
+  "packageManager": "yarn@3.6.3"
 }
