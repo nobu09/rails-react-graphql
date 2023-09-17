@@ -1,6 +1,10 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
+
+type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+
+
 export type BooksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
