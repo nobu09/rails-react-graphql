@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import { useBooksQuery, useCreateBookMutation, useDeleteBookMutation } from './graphql/generated';
+import { useBooksQuery, useCreateBookMutation, useDeleteBookMutation, useUpdateBookMutation } from './graphql/generated';
 
 function App() {
   const { data: { books = [] } = {} } = useBooksQuery();
   const [createBook] = useCreateBookMutation({refetchQueries: ['books']})
   const [title, setTitle] = useState('');
   const [deleteBook] = useDeleteBookMutation({refetchQueries: ['books']})
+  const [updateBook] = useUpdateBookMutation({refetchQueries: ['books']})
 
   return (
     <div>
@@ -24,6 +25,7 @@ function App() {
         {books.map((book) => (
           <div key={book.id}>
             <div>{book.title}</div>
+            <input value={book.title || ""} onChange={(e) => updateBook({ variables: { id: book.id, params: { title: e.target.value } } })} />
             <button onClick={() => deleteBook({ variables: { id : book.id }})}>
               削除
             </button>
